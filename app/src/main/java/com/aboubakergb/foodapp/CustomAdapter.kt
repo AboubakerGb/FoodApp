@@ -1,6 +1,8 @@
 package com.aboubakergb.foodapp
 
 
+import android.content.Context
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,14 +10,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter(val img: Array<Int>,val  title: Array<String>): RecyclerView.Adapter<CustomAdapter.CustomViewHolder>() {
+class CustomAdapter(val context: Context, private val foodList : List<Food> , var listener : (Food) -> Unit ): RecyclerView.Adapter<CustomAdapter.CustomViewHolder>() {
 
-    inner class CustomViewHolder(itemView: View ) : RecyclerView.ViewHolder(itemView ){
+     class CustomViewHolder(itemView: View ) : RecyclerView.ViewHolder(itemView ){
+
+         val foodImage :ImageView = itemView.findViewById<ImageView>(R.id.imageView)
+         val foodName: TextView =itemView.findViewById<TextView>(R.id.tv_Title)
 
         // set information in card view (item food)
-        fun bindValues(image: Int, txt: String) {
-            itemView.findViewById<ImageView>(R.id.imageView).setImageResource(image)
-            itemView.findViewById<TextView>(R.id.tv_Title).text =txt
+        fun bindValues(food: Food,  listener : (Food) -> Unit) {
+            foodImage.setImageResource(food.foodImg)
+            foodName.text = food.foodName
+            itemView.setOnClickListener{ listener(food) }
         }
     }
 
@@ -26,12 +32,12 @@ class CustomAdapter(val img: Array<Int>,val  title: Array<String>): RecyclerView
     }
 
     override fun getItemCount(): Int {
-        return img.size
+        return foodList.size
     }
 
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        holder.bindValues(img[position]  , title[position] )
+        holder.bindValues(foodList[position]  , listener )
     }
 
 }
