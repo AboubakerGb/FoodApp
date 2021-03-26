@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.aboubakergb.foodapp.FoodsScreens.MainActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +14,8 @@ class SplashActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             // Start your app main activity
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this,
+                MainActivity::class.java))
             // close this activity
             finish()
         }, 3000)

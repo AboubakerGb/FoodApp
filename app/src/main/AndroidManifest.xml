@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".JuicesScreen.JuicesScreenActivity"></activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".FoodDetailActivity" />
+        <activity android:name=".JuicesScreen.JuiceDetailActivity"></activity>
+        <activity android:name=".JuicesScreen.JuicesScreenActivity" />
+        <activity android:name=".FoodsScreens.MainActivity" />
+        <activity android:name=".FoodsScreens.FoodDetailActivity" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
